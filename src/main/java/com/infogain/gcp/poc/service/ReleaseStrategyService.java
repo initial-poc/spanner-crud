@@ -27,7 +27,7 @@ public class ReleaseStrategyService {
 
         ConnectableFlux<Object> flux =Flux.create(fluxSink -> {
             Optional<PNREntity> maxRelease = list.stream().filter(x -> x.getStatus().equals(("RELEASED"))).
-                    min(PNREntity::compareTo);
+                    max(PNREntity::compareTo);
             Optional<PNREntity> minPendingOrFailed = list.stream().filter(x -> x.getStatus().
                     equals(("PENDING")) || x.getStatus().equals(("FAILED"))).min(PNREntity::compareTo);
 

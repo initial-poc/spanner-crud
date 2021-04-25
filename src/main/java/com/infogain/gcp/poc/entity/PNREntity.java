@@ -12,6 +12,7 @@ import org.springframework.cloud.gcp.data.spanner.core.mapping.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Builder
 @Table(name = "group_message_store")
 public class PNREntity implements Comparable{
 
