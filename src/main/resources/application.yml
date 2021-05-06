@@ -1,35 +1,64 @@
-
-# actuator properties
-management:
-  endpoints:
-    web.exposure.include: '*'
-  endpoint:
-    health.show-details: always
-  info.git.mode: full
-
-# info end point properties
-info:
-  app:
-    name: spring-crud
-    description: Spring Data Cloud Spanner CRUD APIs
-    version: 1.0.0
-    java-vendor: ${java.specification.vendor}
-
-# logging properties
-logging:
-  level.org.springframework: info
-  pattern.console: "%X{global-transaction-id} %d{yyyy-MM-dd HH:mm:ss} %-5level %C:%L - %m%n"
-  file: logs/app.log
-
-# gcp properties
+#spring.jpa.properties.hibernate.jdbc.batch_size=20
 spring:
-  profiles.active: test
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 20
+  profiles.active: emulator
   cloud:
     gcp:
       project-id: pnr-order-poc
       spanner:
         instance-id: instance-1
         database: database-1
-#        credentials.location: file:C:\softwares\gcp\keys.json
-#  jpa:
-#    show-sql: true
+
+## logging
+logging:
+  pattern.console: '%d{yyyy-MM-dd HH:mm:ss} [%X{source}] [%X{correlation-id}] [%-5level] [%C:%L] - %m%n'
+  file: logs/spanner-pollar-convereter-publisher/app.log
+  level.org.springframework: info
+
+# actuator properties
+management:
+  endpoints.web.exposure.include: '*'
+  endpoint.health.show-details: always
+  info.git.mode: full
+
+info:
+  app:
+    name: pnr-order-poc
+    description: Google cloud spanner poller
+    version: 1.0.0
+    java-vendor: ${java.specification.vendor}
+
+
+---
+spring.profiles: dev
+
+---
+spring.profiles: test
+
+---
+spring.profiles: prod
+
+---
+spring.profiles: emulator
+
+server.port: 4040
+
+spring:
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 20
+  cloud:
+    gcp:
+      project-id: pnr-order-poc
+      spanner:
+        emulator:
+          enabled: true
+        emulator-host: localhost:9010
+        instance-id: instance-1
+        database: database-1

@@ -3,7 +3,6 @@ package com.infogain.gcp.poc.entity;
 import com.google.cloud.Timestamp;
 import com.infogain.gcp.poc.model.OutboxStatusModel;
 import lombok.*;
-import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.cloud.gcp.data.spanner.core.mapping.Column;
 import org.springframework.cloud.gcp.data.spanner.core.mapping.PrimaryKey;
 import org.springframework.cloud.gcp.data.spanner.core.mapping.Table;
@@ -42,7 +41,13 @@ public class OutboxStatusEntity {
     @SneakyThrows
     public OutboxStatusModel buildModel(){
         OutboxStatusModel outboxStatusModel = new OutboxStatusModel();
-        BeanUtils.copyProperties(outboxStatusModel, this);
+        outboxStatusModel.setStatus(this.getStatus());
+        outboxStatusModel.setCreated(this.getCreated());
+        outboxStatusModel.setLocator(this.getLocator());
+        outboxStatusModel.setVersion(this.getVersion());
+        outboxStatusModel.setDestination(this.getDestination());
+        outboxStatusModel.setInstance(this.getInstance());
+        outboxStatusModel.setUpdated(this.getUpdated());
         return outboxStatusModel;
     }
 }

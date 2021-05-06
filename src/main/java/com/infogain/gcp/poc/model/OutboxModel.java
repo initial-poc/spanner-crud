@@ -3,7 +3,6 @@ package com.infogain.gcp.poc.model;
 import com.google.cloud.Timestamp;
 import com.infogain.gcp.poc.entity.OutboxEntity;
 import lombok.*;
-import org.apache.commons.beanutils.BeanUtils;
 
 @Data
 @NoArgsConstructor
@@ -16,6 +15,10 @@ public class OutboxModel {
     private String parent_locator;
     private String created;
     private String data;
+    private int status;
+    private int retry_count;
+    private Timestamp updated;
+    private long processing_time_millis;
 
     @SneakyThrows
     public OutboxEntity buildEntity(){

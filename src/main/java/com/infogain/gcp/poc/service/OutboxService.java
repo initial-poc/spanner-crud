@@ -19,8 +19,6 @@ public class OutboxService {
     @Autowired
     private OutboxRepository outboxRepository;
 
-    @SuppressWarnings("all")
-    @Transactional
     public OutboxModel saveOutboxModel(OutboxModel outboxModel){
         OutboxEntity outboxEntity = outboxModel.buildEntity();
         log.info("Saving OutboxEntity={}",outboxEntity.toString());
