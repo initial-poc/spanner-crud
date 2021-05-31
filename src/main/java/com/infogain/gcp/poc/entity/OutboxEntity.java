@@ -22,8 +22,8 @@ public class OutboxEntity {
     @Column(name = "version")
     private Integer version;
 
-    @Column(name = "parent_locator")
-    private String parent_locator;
+    @Column(name = "parentPnr")
+    private String parentPnr;
 
     @Column(name = "created")
     private Timestamp created;
@@ -41,7 +41,7 @@ public class OutboxEntity {
         OutboxModel outboxModel = new OutboxModel();
         outboxModel.setCreated(this.getCreated().toString());
         outboxModel.setLocator(this.getLocator());
-        outboxModel.setParent_locator(this.getParent_locator());
+        outboxModel.setParent_pnr(this.getParentPnr());
         outboxModel.setVersion(this.getVersion());
         outboxModel.setData(this.getData());
         return outboxModel;
