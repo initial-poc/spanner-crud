@@ -3,6 +3,7 @@ package com.infogain.gcp.poc.model;
 import com.google.cloud.Timestamp;
 import com.infogain.gcp.poc.entity.OutboxEntity;
 import lombok.*;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Data
 @NoArgsConstructor
@@ -12,7 +13,7 @@ public class OutboxModel {
 
     private String locator;
     private Integer version;
-    private String parent_locator;
+    private String parent_pnr;
     private String created;
     private String data;
     private int status;
@@ -25,9 +26,11 @@ public class OutboxModel {
         OutboxEntity outboxEntity = new OutboxEntity();
         outboxEntity.setData(data);
         outboxEntity.setLocator(locator);
-        outboxEntity.setParent_locator(parent_locator);
+        outboxEntity.setParentPnr(parent_pnr);
         outboxEntity.setVersion(version);
         outboxEntity.setCreated(Timestamp.parseTimestamp(created));
+        //TODO: change csv to get this value.
+        //outboxEntity.setUpdated(Timestamp.now());
         return outboxEntity;
     }
 
