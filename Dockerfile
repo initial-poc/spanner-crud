@@ -7,7 +7,7 @@ LABEL maintainer="donthu.babu@infogain.com"
 VOLUME /tmp
 
 # Make port 9001 available to the world outside the container
-EXPOSE 9001
+EXPOSE 4040
 
 # application jar file when packaged
 ARG jar_file=target/spanner-crud.jar
