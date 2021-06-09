@@ -1,14 +1,15 @@
 #spring.jpa.properties.hibernate.jdbc.batch_size=20
+server.port: 4040
 spring:
   jpa:
     properties:
       hibernate:
         jdbc:
           batch_size: 20
-  profiles.active: emulator
+  profiles.active: dev
   cloud:
     gcp:
-      project-id: pnr-order-poc
+      project-id: sab-ors-poc-sbx-01-9096
       spanner:
         instance-id: instance-1
         database: database-1
@@ -27,7 +28,7 @@ management:
 
 info:
   app:
-    name: pnr-order-poc
+    name: spanner-crud
     description: Google cloud spanner poller
     version: 1.0.0
     java-vendor: ${java.specification.vendor}
