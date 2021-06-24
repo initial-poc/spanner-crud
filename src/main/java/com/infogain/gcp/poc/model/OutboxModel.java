@@ -28,7 +28,7 @@ public class OutboxModel {
         outboxEntity.setLocator(locator);
         outboxEntity.setParentPnr(parent_pnr);
         outboxEntity.setVersion(version);
-        outboxEntity.setCreated(Timestamp.parseTimestamp(created));
+        outboxEntity.setCreated(Timestamp.now());
         //TODO: change csv to get this value.
         //outboxEntity.setUpdated(Timestamp.now());
         return outboxEntity;
