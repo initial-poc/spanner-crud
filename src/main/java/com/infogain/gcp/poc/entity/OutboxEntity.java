@@ -22,7 +22,7 @@ public class OutboxEntity {
     @Column(name = "version")
     private Integer version;
 
-    @Column(name = "parentPnr")
+    @Column(name = "parent_locator")
     private String parentPnr;
 
     @Column(name = "created")
